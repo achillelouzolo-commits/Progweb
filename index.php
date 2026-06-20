@@ -148,6 +148,86 @@ foreach ($equipes as $equipe) {
         </div>
       </div>
       </div>
+    
+
+<div id="matchs" class="section d-none">
+  <?php
+  $sqlMatchs = "
+    SELECT
+      matchs.date_match,
+      groupes.lettre AS groupe,
+      stades.nom AS stade,
+      equipe1.nom AS equipe1,
+      equipe2.nom AS equipe2
+    FROM matchs
+    JOIN groupes ON groupes.id = matchs.groupe_id
+    JOIN stades ON stades.id = matchs.stade_id
+    JOIN match_equipes me1 ON me1.match_id = matchs.id
+    JOIN match_equipes me2
+      ON me2.match_id = matchs.id
+      AND me1.equipe_id < me2.equipe_id
+    JOIN equipes equipe1 ON equipe1.id = me1.equipe_id
+    JOIN equipes equipe2 ON equipe2.id = me2.equipe_id
+    ORDER BY matchs.date_match
+  ";
+
+  $requeteMatchs = $pdo->query($sqlMatchs);
+  $listeMatchs = $requeteMatchs->fetchAll(PDO::FETCH_ASSOC);
+  ?>
+
+  <div class="matchs-page">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="#" onclick="showSection('accueil')">
+            Accueil
+          </a>
+          <a class="nav-link" href="#" onclick="showSection('groupes')">
+            Groupes
+          </a>
+          <a class="nav-link active" href="#" onclick="showSection('matchs')">
+            Matchs
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <h1 class="text-center text-white mb-4">
+        Les matchs de la Coupe du monde 2026
+      </h1>
+
+      <div class="row g-4">
+        <?php foreach ($listeMatchs as $match): ?>
+          <?php $date = new DateTime($match['date_match']); ?>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="carte-match">
+              <div class="groupe-match">
+                Groupe <?= htmlspecialchars($match['groupe']) ?>
+              </div>
+
+              <div class="date-match">
+                <?= $date->format('d/m/Y à H:i') ?>
+              </div>
+
+              <div class="equipes-match">
+                <span><?= htmlspecialchars($match['equipe1']) ?></span>
+                <strong>VS</strong>
+                <span><?= htmlspecialchars($match['equipe2']) ?></span>
+              </div>
+
+              <div class="stade-match">
+                <?= htmlspecialchars($match['stade']) ?>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </div>
+</div>
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     ></script>
