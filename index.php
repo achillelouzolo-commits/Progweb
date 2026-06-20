@@ -73,48 +73,48 @@
       }
       ?>
       -->
-        <div class="TousGroupes">
-        <div class="l1">
-          <div class="col">
+        <div class="hero">
+        <div class="row">
+          <div class="col text-white">
             Groupe A
           </div>
-          <div class="col">
+          <div class="col text-white">
             Groupe B
           </div>
-          <div class="col">
+          <div class="col text-white">
             Groupe C
           </div>
         </div>
-        <div class="l2">
-          <div class="col">
+        <div class="row">
+          <div class="col text-white">
             Groupe D
           </div>
-          <div class="col">
+          <div class="col text-white">
             Groupe E
           </div>
-          <div class="col">
+          <div class="col text-white">
             Groupe F
           </div>
         </div>
-        <div class="l3">
-          <div class="col">
+        <div class="row">
+          <div class="col text-white">
             Groupe G
           </div>
-          <div class="col">
+          <div class="col text-white">
             Groupe H
           </div>
-          <div class="col">
+          <div class="col text-white">
             Groupe I
           </div>
         </div>
-           <div class="l4">
-          <div class="col">
+           <div class="row">
+          <div class="col text-white">
             Groupe J
           </div>
-          <div class="col">
+          <div class="col text-white">
             Groupe K
           </div>
-          <div class="col">
+          <div class="col text-white">
             Groupe L
           </div>
         </div>
