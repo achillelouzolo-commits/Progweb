@@ -12,13 +12,14 @@
     
   </head>
   <body>
+    <div id="accueil" class="section">
     <div class="hero">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <div class="navbar-nav ms-auto">
-            <a class="nav-link active" href="#">Accueil</a>
-            <a class="nav-link" href="#">Groupes</a>
-            <a class="nav-link" href="#">Matchs</a>
+            <a class="nav-link active" href="#" onclick="showSection('accueil')"">Accueil</a>
+            <a class="nav-link" href="#" onclick="showSection('groupes')"">Groupes</a>
+            <a class="nav-link" href="#" onclick="showSection('matchs')"">Matchs</a>
           </div>
         </div>
       </nav>
@@ -38,8 +39,14 @@
         </div>
       </div>
     </div>
+    </div>
+    </div>
+    <div id="groupes" class="section d-none">
+        <p>bonjour</p>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     ></script>
+    <script src="javascript.js"></script>
   </body>
 </html>
