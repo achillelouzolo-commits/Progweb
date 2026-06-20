@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#712cf9" />
     <link href="cdm.css" rel="stylesheet" />
-    
+   
   </head>
   <body>
     <div id="accueil" class="section">
@@ -43,70 +43,107 @@
     <div id="groupes" class="section d-none">
 
       <?php
-	$pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root','');
+$pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root','');
 
-	$sql = "
-	SELECT 
-	    groupes.lettre AS groupe,
-	    equipes.nom AS pays,
-	    equipes.code_pays,
-	    equipes.classement_fifa
-	FROM groupes
-	JOIN groupe_equipes ON groupes.id = groupe_equipes.groupe_id
-	JOIN equipes ON equipes.id = groupe_equipes.equipe_id
-	ORDER BY groupes.lettre, equipes.classement_fifa
-	";
-	$requete = $pdo->query($sql);
-	$equipes = $requete->fetchAll(PDO::FETCH_ASSOC);
-	$groupes = [];
-	foreach ($equipes as $equipe) {
-	    $groupes[$equipe["groupe"]][] = $equipe;
-	}
+$sql = "
+SELECT
+   groupes.lettre AS groupe,
+   equipes.nom AS pays,
+   equipes.code_pays,
+   equipes.classement_fifa
+FROM groupes
+JOIN groupe_equipes ON groupes.id = groupe_equipes.groupe_id
+JOIN equipes ON equipes.id = groupe_equipes.equipe_id
+ORDER BY groupes.lettre, equipes.classement_fifa
+";
+$requete = $pdo->query($sql);
+$equipes = $requete->fetchAll(PDO::FETCH_ASSOC);
+$groupes = [];
+foreach ($equipes as $equipe) {
+   $groupes[$equipe["groupe"]][] = $equipe;
+}
 ?>
-      
-        <div class="hero">
-        <div class="row">
-          <div class="col text-white">
+     
+        <div class="hero container-fluid px-0">
+        <h1>Les groupe de la coupe du monde 2026 sont :</h1>
+        <div class="row g-0">
+          <div class="col text-white p-3 fs-4">
             Groupe A
+            <?php foreach ($groupes['A'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
-          <div class="col text-white">
+          <div class="col text-white p-3 fs-4">
             Groupe B
+            <?php foreach ($groupes['B'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
-          <div class="col text-white">
+          <div class="col text-white p-3 fs-4">
             Groupe C
+            <?php foreach ($groupes['C'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
         </div>
-        <div class="row">
-          <div class="col text-white">
+        <div class="row g-0">
+          <div class="col text-white p-3 fs-4">
             Groupe D
+            <?php foreach ($groupes['D'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
-          <div class="col text-white">
+          <div class="col text-white p-3 fs-4">
             Groupe E
+            <?php foreach ($groupes['E'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
-          <div class="col text-white">
+          <div class="col text-white p-3 fs-4">
             Groupe F
+            <?php foreach ($groupes['F'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
         </div>
-        <div class="row">
-          <div class="col text-white">
+        <div class="row g-0">
+          <div class="col text-white p-3 fs-4">
             Groupe G
+            <?php foreach ($groupes['G'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
-          <div class="col text-white">
+          <div class="col text-white p-3 fs-4">
             Groupe H
+            <?php foreach ($groupes['H'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
-          <div class="col text-white">
+          <div class="col text-white p-3 fs-4">
             Groupe I
+            <?php foreach ($groupes['I'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
         </div>
-           <div class="row">
-          <div class="col text-white">
+           <div class="row g-0">
+          <div class="col text-white p-3 fs-4">
             Groupe J
+            <?php foreach ($groupes['J'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
-          <div class="col text-white">
+          <div class="col text-white p-3 fs-4">
             Groupe K
+            <?php foreach ($groupes['K'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
-          <div class="col text-white">
+          <div class="col text-white p-3 fs-4">
             Groupe L
+            <?php foreach ($groupes['L'] as $equipe): ?>
+   <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
+   <?php endforeach; ?>
           </div>
         </div>
       </div>
