@@ -41,38 +41,29 @@
       </div>
     </div>
     <div id="groupes" class="section d-none">
-<!--
+
       <?php
+	$pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root','');
 
-      $pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root','');
-
-      $equipes= $groupes = $matchs =[];
-
-      $sql= "
-      SELECT 
-          groupes.lettre AS groupe,
-          equipes.nom AS pays,
-          equipes.code_pays,
-          equipes.classement_fifa,
-          equipes.confederation,
-          details_equipes.surnom,
-          details_equipes.nombre_cdm,
-          details_equipes.entraineur
-      FROM groupes
-      JOIN groupe_equipes ON groupes.id = groupe_equipes.groupe_id
-      JOIN equipes ON equipes.id = groupe_equipes.equipe_id
-      JOIN details_equipes ON equipes.id = details_equipes.equipe_id
-      ORDER BY groupes.lettre, equipes.nom
-      ";
-
-      $requete=$pdo->query($sql);
-      $equipes =$requete->fetchAll(PDO::FETCH_ASSOC);
-      $groupes = [];
-      foreach ($equipes as $equipe) {
-      $groupes[$equipe["groupe"]][] = $equipe;
-      }
-      ?>
-      -->
+	$sql = "
+	SELECT 
+	    groupes.lettre AS groupe,
+	    equipes.nom AS pays,
+	    equipes.code_pays,
+	    equipes.classement_fifa
+	FROM groupes
+	JOIN groupe_equipes ON groupes.id = groupe_equipes.groupe_id
+	JOIN equipes ON equipes.id = groupe_equipes.equipe_id
+	ORDER BY groupes.lettre, equipes.classement_fifa
+	";
+	$requete = $pdo->query($sql);
+	$equipes = $requete->fetchAll(PDO::FETCH_ASSOC);
+	$groupes = [];
+	foreach ($equipes as $equipe) {
+	    $groupes[$equipe["groupe"]][] = $equipe;
+	}
+?>
+      
         <div class="hero">
         <div class="row">
           <div class="col text-white">
