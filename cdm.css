@@ -55,6 +55,70 @@ body {
   margin-left: 1rem;
 }
 
+
+
+/* pour la page matchs */
+
+.matchs-page {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url("degrade-umc.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.carte-match {
+  height: 100%;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s;
+}
+
+.carte-match:hover {
+  transform: translateY(-5px);
+}
+
+.groupe-match {
+  color: #ffd700;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.date-match {
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+.equipes-match {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.equipes-match span {
+  flex: 1;
+}
+
+.equipes-match strong {
+  color: #ffd700;
+}
+
+.stade-match {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
 .nav-masthead .active {
   color: #fff;
   border-bottom-color: #fff;
