@@ -74,99 +74,92 @@
           </nav>
         <h1>Les groupe de la coupe du monde 2026 sont :</h1>
         <div class="row g-0">
-          <div class="col text-white p-3 fs-4">
-            Groupe A
-            <?php foreach ($groupes['A'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-          <div class="col text-white p-3 fs-4">
-            Groupe B
-            <?php foreach ($groupes['B'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-          <div class="col text-white p-3 fs-4">
-            Groupe C
-            <?php foreach ($groupes['C'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-        </div>
-        <div class="row g-0">
-          <div class="col text-white p-3 fs-4">
-            Groupe D
-            <?php foreach ($groupes['D'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-          <div class="col text-white p-3 fs-4">
-            Groupe E
-            <?php foreach ($groupes['E'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-          <div class="col text-white p-3 fs-4">
-            Groupe F
-            <?php foreach ($groupes['F'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-        </div>
-        <div class="row g-0">
-          <div class="col text-white p-3 fs-4">
-            Groupe G
-            <?php foreach ($groupes['G'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-          <div class="col text-white p-3 fs-4">
-            Groupe H
-            <?php foreach ($groupes['H'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-          <div class="col text-white p-3 fs-4">
-            Groupe I
-            <?php foreach ($groupes['I'] as $equipe): ?>
-	    <div class="fs-6"><?= ($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-        </div>
-           <div class="row g-0">
-          <div class="col text-white p-3 fs-4">
-            Groupe J
-            <?php foreach ($groupes['J'] as $equipe): ?>
-	    <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-          <div class="col text-white p-3 fs-4">
-            Groupe K
-            <?php foreach ($groupes['K'] as $equipe): ?>
-	    <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-          <div class="col text-white p-3 fs-4">
-            Groupe L
-            <?php foreach ($groupes['L'] as $equipe): ?>
-	    <div class="fs-6"><?= htmlspecialchars($equipe['pays']) ?></div>
-	    <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
-	    <?php endforeach; ?>
-          </div>
-        </div>
+  <div class="col text-white p-3 fs-4">
+    Groupe D
+    <?php foreach ($groupes['D'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
+    <?php endforeach; ?>
+  </div>
+  <div class="col text-white p-3 fs-4">
+    Groupe E
+    <?php foreach ($groupes['E'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
+    <?php endforeach; ?>
+  </div>
+  <div class="col text-white p-3 fs-4">
+    Groupe F
+    <?php foreach ($groupes['F'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+<div class="row g-0">
+  <div class="col text-white p-3 fs-4">
+    Groupe G
+    <?php foreach ($groupes['G'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <div class="col text-white p-3 fs-4">
+    Groupe H
+    <?php foreach ($groupes['H'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <div class="col text-white p-3 fs-4">
+    Groupe I
+    <?php foreach ($groupes['I'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+<div class="row g-0">
+  <div class="col text-white p-3 fs-4">
+    Groupe J
+    <?php foreach ($groupes['J'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <div class="col text-white p-3 fs-4">
+    Groupe K
+    <?php foreach ($groupes['K'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <div class="col text-white p-3 fs-4">
+    Groupe L
+    <?php foreach ($groupes['L'] as $equipe): ?>
+      <div class="fs-2 d-flex   align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+
 <div id="matchs" class="section d-none">
   <?php
   $sqlMatchs = "
