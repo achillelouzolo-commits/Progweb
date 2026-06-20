@@ -159,8 +159,11 @@
       </div>
     <?php endforeach; ?>
   </div>
-
+        </div>
+      </div>
+    </div>
 <div id="matchs" class="section d-none">
+  
   <?php
   $sqlMatchs = "
     SELECT
