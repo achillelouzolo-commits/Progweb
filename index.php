@@ -1,4 +1,4 @@
-<!doctype html>
+	<!doctype html>
 <html lang="fr" data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#712cf9" />
     <link href="cdm.css" rel="stylesheet" />
-   
+    
   </head>
   <body>
     <div id="accueil" class="section">
@@ -41,30 +41,37 @@
       </div>
     </div>
     <div id="groupes" class="section d-none">
-
       <?php
-$pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root','');
+	$pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root','');
 
-$sql = "
-SELECT
-   groupes.lettre AS groupe,
-   equipes.nom AS pays,
-   equipes.code_pays,
-   equipes.classement_fifa
-FROM groupes
-JOIN groupe_equipes ON groupes.id = groupe_equipes.groupe_id
-JOIN equipes ON equipes.id = groupe_equipes.equipe_id
-ORDER BY groupes.lettre, equipes.classement_fifa
-";
-$requete = $pdo->query($sql);
-$equipes = $requete->fetchAll(PDO::FETCH_ASSOC);
-$groupes = [];
-foreach ($equipes as $equipe) {
-   $groupes[$equipe["groupe"]][] = $equipe;
-}
+	$sql = "
+	SELECT 
+	    groupes.lettre AS groupe,
+	    equipes.nom AS pays,
+	    equipes.code_pays,
+	    equipes.classement_fifa
+	FROM groupes
+	JOIN groupe_equipes ON groupes.id = groupe_equipes.groupe_id
+	JOIN equipes ON equipes.id = groupe_equipes.equipe_id
+	ORDER BY groupes.lettre, equipes.classement_fifa
+	";
+	$requete = $pdo->query($sql);
+	$equipes = $requete->fetchAll(PDO::FETCH_ASSOC);
+	$groupes = [];
+	foreach ($equipes as $equipe) {
+	    $groupes[$equipe["groupe"]][] = $equipe;
+	}
 ?>
-     
+      
         <div class="hero container-fluid px-0">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link active" href="#" onclick="showSection('accueil')">Accueil</a>
+            <a class="nav-link" href="#" onclick="showSection('groupes')">Groupes</a>
+            <a class="nav-link" href="#" onclick="showSection('matchs')">Matchs</a>
+          </div>
+          </nav>
         <h1>Les groupe de la coupe du monde 2026 sont :</h1>
         <div class="row g-0">
           <div class="col text-white p-3 fs-4">
@@ -160,7 +167,7 @@ foreach ($equipes as $equipe) {
         </div>
       </div>
       </div>
-    <div id="matchs" class="section d-none">
+<div id="matchs" class="section d-none">
   <?php
   $sqlMatchs = "
     SELECT
@@ -173,63 +180,41 @@ foreach ($equipes as $equipe) {
     JOIN groupes ON groupes.id = matchs.groupe_id
     JOIN stades ON stades.id = matchs.stade_id
     JOIN match_equipes me1 ON me1.match_id = matchs.id
-    JOIN match_equipes me2
-      ON me2.match_id = matchs.id
-      AND me1.equipe_id < me2.equipe_id
+    JOIN match_equipes me2 ON me2.match_id = matchs.id AND me1.equipe_id < me2.equipe_id
     JOIN equipes equipe1 ON equipe1.id = me1.equipe_id
     JOIN equipes equipe2 ON equipe2.id = me2.equipe_id
     ORDER BY matchs.date_match
   ";
-
   $requeteMatchs = $pdo->query($sqlMatchs);
   $listeMatchs = $requeteMatchs->fetchAll(PDO::FETCH_ASSOC);
   ?>
 
-  <div class="matchs-page">
+  <div class="hero">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="#" onclick="showSection('accueil')">
-            Accueil
-          </a>
-          <a class="nav-link" href="#" onclick="showSection('groupes')">
-            Groupes
-          </a>
-          <a class="nav-link active" href="#" onclick="showSection('matchs')">
-            Matchs
-          </a>
+          <a class="nav-link" href="#" onclick="showSection('accueil')">Accueil</a>
+          <a class="nav-link" href="#" onclick="showSection('groupes')">Groupes</a>
+          <a class="nav-link active" href="#" onclick="showSection('matchs')">Matchs</a>
         </div>
       </div>
     </nav>
 
     <div class="container py-4">
-      <h1 class="text-center text-white mb-4">
-        Les matchs de la Coupe du monde 2026
-      </h1>
-
+      <h1 class="text-center text-white mb-4">Les matchs de la Coupe du monde 2026</h1>
       <div class="row g-4">
         <?php foreach ($listeMatchs as $match): ?>
           <?php $date = new DateTime($match['date_match']); ?>
-
           <div class="col-12 col-md-6 col-lg-4">
             <div class="carte-match">
-              <div class="groupe-match">
-                Groupe <?= htmlspecialchars($match['groupe']) ?>
-              </div>
-
-              <div class="date-match">
-                <?= $date->format('d/m/Y à H:i') ?>
-              </div>
-
+              <div class="groupe-match">Groupe <?= htmlspecialchars($match['groupe']) ?></div>
+              <div class="date-match"><?= $date->format('d/m/Y à H:i') ?></div>
               <div class="equipes-match">
                 <span><?= htmlspecialchars($match['equipe1']) ?></span>
                 <strong>VS</strong>
                 <span><?= htmlspecialchars($match['equipe2']) ?></span>
               </div>
-
-              <div class="stade-match">
-                <?= htmlspecialchars($match['stade']) ?>
-              </div>
+              <div class="stade-match"><?= htmlspecialchars($match['stade']) ?></div>
             </div>
           </div>
         <?php endforeach; ?>
@@ -237,7 +222,6 @@ foreach ($equipes as $equipe) {
     </div>
   </div>
 </div>
-    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     ></script>
