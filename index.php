@@ -74,28 +74,57 @@
           </nav>
         <h1>Les groupe de la coupe du monde 2026 sont :</h1>
         <div class="row g-0">
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
+    Groupe A
+    <?php foreach ($groupes['A'] as $equipe): ?>
+      <div class="  fs-3 d-flex align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <div class="col text-white p-3   fs-3 carte-match">
+    Groupe B
+    <?php foreach ($groupes['B'] as $equipe): ?>
+      <div class="  fs-3 d-flex align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <div class="col text-white p-3   fs-3 carte-match">
+    Groupe C
+    <?php foreach ($groupes['C'] as $equipe): ?>
+      <div class="  fs-3 d-flex align-items-center">
+        <span><?= htmlspecialchars($equipe['pays']) ?></span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+        <div class="row g-0">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe D
     <?php foreach ($groupes['D'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
   </div>
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe E
     <?php foreach ($groupes['E'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
   </div>
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe F
     <?php foreach ($groupes['F'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
@@ -103,28 +132,28 @@
   </div>
 </div>
 <div class="row g-0">
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe G
     <?php foreach ($groupes['G'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
   </div>
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe H
     <?php foreach ($groupes['H'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
   </div>
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe I
     <?php foreach ($groupes['I'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
@@ -132,38 +161,38 @@
   </div>
 </div>
 <div class="row g-0">
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe J
     <?php foreach ($groupes['J'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
   </div>
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe K
     <?php foreach ($groupes['K'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
   </div>
-  <div class="col text-white p-3 fs-4">
+  <div class="col text-white p-3   fs-3 carte-match">
     Groupe L
     <?php foreach ($groupes['L'] as $equipe): ?>
-      <div class="fs-2 d-flex   align-items-center">
+      <div class="  fs-3 d-flex   align-items-center">
         <span><?= htmlspecialchars($equipe['pays']) ?></span>
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
   </div>
-        </div>
-      </div>
-    </div>
+  </div>
+  </div>
+  </div>
+
 <div id="matchs" class="section d-none">
-  
   <?php
   $sqlMatchs = "
     SELECT
@@ -208,13 +237,18 @@
               <div class="groupe-match">Groupe <?= htmlspecialchars($match['groupe']) ?></div>
               <div class="date-match"><?= $date->format('d/m/Y à H:i') ?></div>
               <div class="equipes-match">
+                <!--
+                <span><?= htmlspecialchars($match['equipe1']) ?></span>
+                <strong>VS</strong>
+                <span><?= htmlspecialchars($match['equipe2']) ?></span>
+                -->
                 <span class="team">
-	            <?= htmlspecialchars($match['equipe1']) ?>
                   <img
                     src="https://flagcdn.com/w40/<?= strtolower(htmlspecialchars($match['code_equipe1'])) ?>.png"
                     alt="Drapeau <?= htmlspecialchars($match['equipe1']) ?>"
                     class="team-flag"
                   >
+                  <?= htmlspecialchars($match['equipe1']) ?>
                 </span>
 
                 <strong>VS</strong>
