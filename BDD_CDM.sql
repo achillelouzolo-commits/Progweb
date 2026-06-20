@@ -4,12 +4,10 @@ USE mondial_2026;
 SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS match_equipes;
 DROP TABLE IF EXISTS groupe_equipes;
-DROP TABLE IF EXISTS match_equipe;
 DROP TABLE IF EXISTS matchs;
 DROP TABLE IF EXISTS stades;
 DROP TABLE IF EXISTS details_equipes;
 DROP TABLE IF EXISTS equipes;
-DROP TABLE IF EXISTS pays;
 DROP TABLE IF EXISTS groupes;
 SET FOREIGN_KEY_CHECKS=1;
 
@@ -26,7 +24,6 @@ CREATE TABLE equipes (
     confederation VARCHAR(20) NOT NULL
 );
 
--- Relation 1-1 : une équipe possède une seule fiche détaillée.
 CREATE TABLE details_equipes (
     equipe_id INT PRIMARY KEY,
     surnom VARCHAR(80),
@@ -57,7 +54,7 @@ CREATE TABLE groupe_equipes (
     FOREIGN KEY (equipe_id) REFERENCES equipes(id) ON DELETE CASCADE
 );
 
--- Relation N-N entre les équipes et les matchs.
+
 CREATE TABLE match_equipes (
     match_id INT NOT NULL,
     equipe_id INT NOT NULL,
@@ -84,6 +81,7 @@ BEGIN
     SELECT id,equipe_creee FROM groupes WHERE lettre=lettre_groupe;
 END //
 DELIMITER ;
+
 
 CALL ajouter_equipe('A','Mexique','MX',15,'CONCACAF','El Tri',0,'Javier Aguirre');
 CALL ajouter_equipe('A','Afrique du Sud','ZA',55,'CAF','Bafana Bafana',0,'Hugo Broos');
