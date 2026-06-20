@@ -205,18 +205,13 @@
               <div class="groupe-match">Groupe <?= htmlspecialchars($match['groupe']) ?></div>
               <div class="date-match"><?= $date->format('d/m/Y à H:i') ?></div>
               <div class="equipes-match">
-                <!--
-                <span><?= htmlspecialchars($match['equipe1']) ?></span>
-                <strong>VS</strong>
-                <span><?= htmlspecialchars($match['equipe2']) ?></span>
-                -->
                 <span class="team">
+	            <?= htmlspecialchars($match['equipe1']) ?>
                   <img
                     src="https://flagcdn.com/w40/<?= strtolower(htmlspecialchars($match['code_equipe1'])) ?>.png"
                     alt="Drapeau <?= htmlspecialchars($match['equipe1']) ?>"
                     class="team-flag"
                   >
-                  <?= htmlspecialchars($match['equipe1']) ?>
                 </span>
 
                 <strong>VS</strong>
