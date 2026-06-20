@@ -1,8 +1,15 @@
+DROP TABLE IF EXISTS Selection;
+DROP TABLE IF EXISTS Groupe;
+DROP TABLE IF EXISTS GS;
+DROP TABLE IF EXISTS Stade;
+DROP TABLE IF EXISTS Matchs;
+
 CREATE TABLE Selection (
     idSelection NUMBER PRIMARY KEY,
     Nom VARCHAR2(50),
     Continent VARCHAR2(50),
     Selectionneur VARCHAR2(50),
+    Confederation VARCHAR(20),
     ClassementFifa NUMBER
 );
 
