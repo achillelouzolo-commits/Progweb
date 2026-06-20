@@ -175,7 +175,9 @@
       groupes.lettre AS groupe,
       stades.nom AS stade,
       equipe1.nom AS equipe1,
-      equipe2.nom AS equipe2
+      equipe1.code_pays AS code_equipe1,
+      equipe2.nom AS equipe2,
+      equipe2.code_pays AS code_equipe2
     FROM matchs
     JOIN groupes ON groupes.id = matchs.groupe_id
     JOIN stades ON stades.id = matchs.stade_id
@@ -210,9 +212,30 @@
               <div class="groupe-match">Groupe <?= htmlspecialchars($match['groupe']) ?></div>
               <div class="date-match"><?= $date->format('d/m/Y à H:i') ?></div>
               <div class="equipes-match">
+                <!--
                 <span><?= htmlspecialchars($match['equipe1']) ?></span>
                 <strong>VS</strong>
                 <span><?= htmlspecialchars($match['equipe2']) ?></span>
+                -->
+                <span class="team">
+                  <img
+                    src="https://flagcdn.com/w40/<?= strtolower(htmlspecialchars($match['code_equipe1'])) ?>.png"
+                    alt="Drapeau <?= htmlspecialchars($match['equipe1']) ?>"
+                    class="team-flag"
+                  >
+                  <?= htmlspecialchars($match['equipe1']) ?>
+                </span>
+
+                <strong>VS</strong>
+
+                <span class="team">
+                  <img
+                    src="https://flagcdn.com/w40/<?= strtolower(htmlspecialchars($match['code_equipe2'])) ?>.png"
+                    alt="Drapeau <?= htmlspecialchars($match['equipe2']) ?>"
+                    class="team-flag"
+                  >
+                  <?= htmlspecialchars($match['equipe2']) ?>
+                </span>
               </div>
               <div class="stade-match"><?= htmlspecialchars($match['stade']) ?></div>
             </div>
