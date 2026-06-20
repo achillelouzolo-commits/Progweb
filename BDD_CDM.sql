@@ -93,7 +93,7 @@ CALL ajouter_equipe('B','Suisse','CH',17,'UEFA','La Nati',0,'Murat Yakin');
 CALL ajouter_equipe('B','Bosnie-Herzégovine','BA',68,'UEFA','Les Dragons',0,'Sergej Barbarez');
 CALL ajouter_equipe('C','Brésil','BR',5,'CONMEBOL','Seleção',5,'Carlo Ancelotti');
 CALL ajouter_equipe('C','Maroc','MA',11,'CAF','Lions de l’Atlas',0,'Mohamed Ouahbi');
-CALL ajouter_equipe('C','Écosse','GB',38,'UEFA','Tartan Army',0,'Steve Clarke');
+CALL ajouter_equipe('C','Écosse','gb-sct',38,'UEFA','Tartan Army',0,'Steve Clarke');
 CALL ajouter_equipe('C','Haïti','HT',83,'CONCACAF','Grenadiers',0,'Sébastien Migné');
 CALL ajouter_equipe('D','États-Unis','US',14,'CONCACAF','Team USA',0,'Mauricio Pochettino');
 CALL ajouter_equipe('D','Paraguay','PY',39,'CONMEBOL','La Albirroja',0,'Gustavo Alfaro');
@@ -127,7 +127,7 @@ CALL ajouter_equipe('K','Portugal','PT',6,'UEFA','A Seleção',0,'Roberto Martí
 CALL ajouter_equipe('K','Colombie','CO',13,'CONMEBOL','Los Cafeteros',0,'Néstor Lorenzo');
 CALL ajouter_equipe('K','RD Congo','CD',57,'CAF','Les Léopards',0,'Sébastien Desabre');
 CALL ajouter_equipe('K','Ouzbékistan','UZ',50,'AFC','Loups Blancs',0,'Fabio Cannavaro');
-CALL ajouter_equipe('L','Angleterre','GB',4,'UEFA','Three Lions',1,'Thomas Tuchel');
+CALL ajouter_equipe('L','Angleterre','gb-eng',4,'UEFA','Three Lions',1,'Thomas Tuchel');
 CALL ajouter_equipe('L','Ghana','GH',64,'CAF','Black Stars',0,'Carlos Queiroz');
 CALL ajouter_equipe('L','Panama','PA',32,'CONCACAF','Los Canaleros',0,'Thomas Christiansen');
 CALL ajouter_equipe('L','Croatie','HR',10,'UEFA','Vatreni',0,'Zlatko Dalić');
