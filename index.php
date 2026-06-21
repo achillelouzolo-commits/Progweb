@@ -1,4 +1,4 @@
-		<!doctype html>
+	<!doctype html>
 <html lang="fr" data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
@@ -20,6 +20,7 @@
             <a class="nav-link active" href="#" onclick="showSection('accueil')">Accueil</a>
             <a class="nav-link" href="#" onclick="showSection('groupes')">Groupes</a>
             <a class="nav-link" href="#" onclick="showSection('matchs')">Matchs</a>
+            <a class="nav-link" href="#" onclick="showSection('classement')">Classement</a>
           </div>
         </div>
       </nav>
@@ -36,28 +37,6 @@
           <p class="lead mb-4">
             Les équipes, les groupes et tous les matchs du plus grand Mondial de l'Histoire, réunis dans une seule expérience simple et vivante.  
           </p>
-        </div>
-        <div class="row text-white text-center mt-5">
-          <div class="col-md-4">
-            <h2>48</h2>
-            <p>Équipes</p>
-          </div>
-          <div class="col-md-4">
-            <h2>12</h2>
-            <p>Groupes</p>
-          </div>
-          <div class="col-md-4">
-            <h2>72</h2>
-            <p>Matchs</p>
-          </div>
-        </div>
-        <div class="card bg-dark bg-opacity-75 text-white mx-auto mt-4" style="max-width: 420px;">
-          <div class="card-body">
-            <h5 class="card-title">Match d’ouverture</h5>
-            <p class="card-text mb-1">Mexique 🇲🇽 VS Afrique du Sud 🇿🇦</p>
-            <p class="card-text">11/06/2026 à 21:00</p>
-            <span class="badge text-bg-warning">Estadio Azteca</span>
-          </div>
         </div>
       </div>
       </div>
@@ -89,9 +68,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <div class="navbar-nav ms-auto">
-            <a class="nav-link active" href="#" onclick="showSection('accueil')">Accueil</a>
-            <a class="nav-link" href="#" onclick="showSection('groupes')">Groupes</a>
+            <a class="nav-link" href="#" onclick="showSection('accueil')">Accueil</a>
+            <a class="nav-link active" href="#" onclick="showSection('groupes')">Groupes</a>
             <a class="nav-link" href="#" onclick="showSection('matchs')">Matchs</a>
+            <a class="nav-link" href="#" onclick="showSection('classement')">Classement</a>
           </div>
           </nav>
         <h1>Les groupe de la coupe du monde 2026 sont :</h1>
@@ -245,6 +225,7 @@
           <a class="nav-link" href="#" onclick="showSection('accueil')">Accueil</a>
           <a class="nav-link" href="#" onclick="showSection('groupes')">Groupes</a>
           <a class="nav-link active" href="#" onclick="showSection('matchs')">Matchs</a>
+          <a class="nav-link" href="#" onclick="showSection('classement')">Classement</a>
         </div>
       </div>
     </nav>
@@ -291,7 +272,59 @@
       </div>
     </div>
   </div>
-</div>
+</div><div id="classement" class="section d-none">
+	<div class="hero">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="#" onclick="showSection('accueil')">Accueil</a>
+          <a class="nav-link" href="#" onclick="showSection('groupes')">Groupes</a>
+          <a class="nav-link" href="#" onclick="showSection('matchs')">Matchs</a>
+          <a class="nav-link active" href="#" onclick="showSection('classement')">Classement</a>
+        </div>
+      </div>
+    </nav>
+    <?php
+	$sqlClassement = "
+	  SELECT 
+	    equipes.nom AS pays,
+	    equipes.code_pays,
+	    equipes.classement_fifa,
+	    equipes.confederation
+	  FROM equipes
+	  ORDER BY equipes.classement_fifa ASC
+	";
+
+	$requeteClassement = $pdo->query($sqlClassement);
+	$classement = $requeteClassement->fetchAll(PDO::FETCH_ASSOC);
+?>
+<div class="container py-4">
+      <h1 class="text-center text-white mb-4">Classement FIFA</h1>
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Drapeau</th>
+            <th>Pays</th>
+            <th>Confédération</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($classement as $equipe): ?>
+          <tr>
+            <td><?= $equipe['classement_fifa'] ?></td>
+            <td>
+              <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+            </td>
+            <td><?= htmlspecialchars($equipe['pays']) ?></td>
+            <td><?= htmlspecialchars($equipe['confederation']) ?></td>
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>	
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     ></script>
