@@ -67,7 +67,7 @@ INSERT INTO groupes (lettre) VALUES ('A'),('B'),('C'),('D'),('E'),('F'),('G'),('
 
 DELIMITER //
 CREATE PROCEDURE ajouter_equipe(
-    IN lettre_groupe CHAR(1), IN nom_equipe VARCHAR(60), IN code CHAR(2),
+    IN lettre_groupe CHAR(1), IN nom_equipe VARCHAR(60), IN code CHAR(10),
     IN rang INT, IN conf VARCHAR(20), IN surnom_equipe VARCHAR(80),
     IN nb_titres INT, IN nom_entraineur VARCHAR(80)
 )
