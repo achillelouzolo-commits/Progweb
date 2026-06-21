@@ -52,7 +52,33 @@ body {
   margin-left: 1rem;
 }
 
+/* effet de survole sur les équipes */
 
+#groupes span[onclick] {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+#groupes span[onclick]::after {
+  content: " →";
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+#groupes span[onclick]:hover::after {
+  opacity: 1;
+}
+
+#groupes span[onclick]:hover {
+  color: #ffd700;
+  background-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 35px 0 rgba(255, 255, 255, 0.18);
+}
 
 /* pour la page matchs */
 
