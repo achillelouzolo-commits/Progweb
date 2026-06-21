@@ -75,7 +75,8 @@
           </div>
           </nav>
         <h1>Les groupe de la coupe du monde 2026 sont :</h1>
-        <div class="row g-0">
+        <div class="row g-4 mb-4">
+          <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe A
     <?php foreach ($groupes['A'] as $equipe): ?>
@@ -84,7 +85,9 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe B
     <?php foreach ($groupes['B'] as $equipe): ?>
@@ -93,7 +96,9 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe C
     <?php foreach ($groupes['C'] as $equipe): ?>
@@ -102,9 +107,11 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
 </div>
-        <div class="row g-0">
+        <div class="row g-4 mb-4">
+          <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe D
     <?php foreach ($groupes['D'] as $equipe): ?>
@@ -113,7 +120,9 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe E
     <?php foreach ($groupes['E'] as $equipe): ?>
@@ -122,7 +131,9 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe F
     <?php foreach ($groupes['F'] as $equipe): ?>
@@ -131,9 +142,11 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
 </div>
-<div class="row g-0">
+<div class="row g-4 mb-4">
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe G
     <?php foreach ($groupes['G'] as $equipe): ?>
@@ -142,7 +155,9 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe H
     <?php foreach ($groupes['H'] as $equipe): ?>
@@ -151,7 +166,9 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe I
     <?php foreach ($groupes['I'] as $equipe): ?>
@@ -160,9 +177,11 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
 </div>
-<div class="row g-0">
+<div class="row g-4 mb-4">
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe J
     <?php foreach ($groupes['J'] as $equipe): ?>
@@ -171,7 +190,9 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe K
     <?php foreach ($groupes['K'] as $equipe): ?>
@@ -180,7 +201,9 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
+  <div class="col">
   <div class="col text-white p-3   fs-3 carte-match">
     Groupe L
     <?php foreach ($groupes['L'] as $equipe): ?>
@@ -189,6 +212,7 @@
         <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
+    </div>
   </div>
   </div>
   </div>
