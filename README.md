@@ -27,6 +27,12 @@ Et enfin, il y a un onglet permet de voir le classement des équipes qui partici
   <li>JavaScript</li>
   <li>Bootstrap 5.3</li>
 </ul></br>
+
+<h1> Modèle E/A de notre base de données </h1>
+
+<img width="1550" height="688" alt="ModeleRelationnel" src="https://github.com/user-attachments/assets/9bc7215d-3ee3-4f5c-bab6-7dee9f11ce34" />
+
+
 <p>Fait par:
   
 Achille LOUZOLO MATUMONA
