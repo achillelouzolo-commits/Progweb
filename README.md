@@ -13,7 +13,10 @@ Pour accéder au site web il faut tout d'abord:
 <h1>Fonctionnalités</h1><br/>
 <p>Le site permet de visualiser les différents groupes que composent la Coupe du Monde 2026, pour chaque groupe l'utilisateur peut voir des informations détaillées pour chaque pays en cliquant dessus.
   
-Le site que nous avons créeer pour cette SAÉ donne également la possibilité de visualiser tous les matchs de la phase de poules de cette coupe du monde, avec toutes les informations relatives aux matchs. Et enfin, il y a un onglet permet de voir le classement des équipes qui participent à cette coupe du monde grâce à leur classement FIFA.
+Le site que nous avons créeer pour cette SAÉ donne également la possibilité de visualiser tous les matchs de la phase de poules de cette coupe du monde, avec toutes les informations relatives aux matchs.
+De plus, le prochain match à venir est affiché sur la page d'accueil.
+
+Et enfin, il y a un onglet permet de voir le classement des équipes qui participent à cette coupe du monde grâce à leur classement FIFA.
 </p><br/>
 <h1>Outils utilisés</h1>
 <ul>
