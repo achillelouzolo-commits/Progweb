@@ -19,7 +19,7 @@ CREATE TABLE groupes (
 CREATE TABLE equipes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(60) UNIQUE NOT NULL,
-    code_pays CHAR(2) NOT NULL,
+    code_pays CHAR(10) NOT NULL,
     classement_fifa INT NOT NULL,
     confederation VARCHAR(20) NOT NULL
 );
