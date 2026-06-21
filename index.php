@@ -1,4 +1,4 @@
-	<!doctype html>
+		<!doctype html>
 <html lang="fr" data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
@@ -36,6 +36,28 @@
           <p class="lead mb-4">
             Les équipes, les groupes et tous les matchs du plus grand Mondial de l'Histoire, réunis dans une seule expérience simple et vivante.  
           </p>
+        </div>
+        <div class="row text-white text-center mt-5">
+          <div class="col-md-4">
+            <h2>48</h2>
+            <p>Équipes</p>
+          </div>
+          <div class="col-md-4">
+            <h2>12</h2>
+            <p>Groupes</p>
+          </div>
+          <div class="col-md-4">
+            <h2>72</h2>
+            <p>Matchs</p>
+          </div>
+        </div>
+        <div class="card bg-dark bg-opacity-75 text-white mx-auto mt-4" style="max-width: 420px;">
+          <div class="card-body">
+            <h5 class="card-title">Match d’ouverture</h5>
+            <p class="card-text mb-1">Mexique 🇲🇽 VS Afrique du Sud 🇿🇦</p>
+            <p class="card-text">11/06/2026 à 21:00</p>
+            <span class="badge text-bg-warning">Estadio Azteca</span>
+          </div>
         </div>
       </div>
       </div>
@@ -243,12 +265,12 @@
                 <span><?= htmlspecialchars($match['equipe2']) ?></span>
                 -->
                 <span class="team">
+                  <?= htmlspecialchars($match['equipe1']) ?>
                   <img
                     src="https://flagcdn.com/w40/<?= strtolower(htmlspecialchars($match['code_equipe1'])) ?>.png"
                     alt="Drapeau <?= htmlspecialchars($match['equipe1']) ?>"
                     class="team-flag"
                   >
-                  <?= htmlspecialchars($match['equipe1']) ?>
                 </span>
 
                 <strong>VS</strong>
