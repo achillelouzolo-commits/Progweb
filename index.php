@@ -23,6 +23,16 @@ $sqlProchain = "
 ";
 $requeteProchain = $pdo->query($sqlProchain);
 $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
+
+$sqlDetails = "
+  SELECT 
+    equipes.nom, equipes.code_pays, equipes.classement_fifa, equipes.confederation,
+    details_equipes.surnom, details_equipes.nombre_cdm, details_equipes.entraineur
+  FROM equipes
+  JOIN details_equipes ON equipes.id = details_equipes.equipe_id
+";
+$requeteDetails = $pdo->query($sqlDetails);
+$detailsEquipes = $requeteDetails->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!doctype html>
 <html lang="fr" data-bs-theme="auto">
@@ -63,44 +73,47 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
           <p class="lead mb-4">
             Les équipes, les groupes et tous les matchs du plus grand Mondial de l'Histoire, réunis dans une seule expérience simple et vivante.  
           </p>
-          <?php if ($prochain): ?>
+          <?php if ($prochain) : ?>
 <div class="d-flex justify-content-center">
 <div style="width: 600px;">
   <div class="carte-match">
     <div class="groupe-match">
-      ⚽ Prochain match — Groupe <?= htmlspecialchars($prochain['groupe']) ?>
+      ⚽ Prochain match — Groupe <?php echo htmlspecialchars($prochain['groupe']) ?>
     </div>
     <div class="date-match fs-5">
-      <?= date('d/m/Y à H:i', strtotime($prochain['date_match'])) ?>
+                <?php echo date('d/m/Y à H:i', strtotime($prochain['date_match'])) ?>
     </div>
     <div class="equipes-match fs-4">
       <span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($prochain['code_equipe1'])) ?>.png">
-        <?= htmlspecialchars($prochain['equipe1']) ?>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($prochain['code_equipe1'])) ?>.png">
+                <?php echo htmlspecialchars($prochain['equipe1']) ?>
       </span>
       <strong>VS</strong>
       <span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($prochain['code_equipe2'])) ?>.png">
-        <?= htmlspecialchars($prochain['equipe2']) ?>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($prochain['code_equipe2'])) ?>.png">
+                <?php echo htmlspecialchars($prochain['equipe2']) ?>
       </span>
     </div>
     <div class="stade-match fs-5">
-      📍 <?= htmlspecialchars($prochain['stade']) ?>
+      📍 <?php echo htmlspecialchars($prochain['stade']) ?>
     </div>
   </div>
   </div>
 </div>
-<?php endif; ?>
+          <?php endif; ?>
 </div>
       </div>
       
       </div>
     </div>
+    <script>
+  const equipes = <?php echo json_encode($detailsEquipes) ?>;
+</script>
     <div id="groupes" class="section d-none">
       <?php
-	$pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root','');
+        $pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root', '');
 
-	$sql = "
+        $sql = "
 	SELECT 
 	    groupes.lettre AS groupe,
 	    equipes.nom AS pays,
@@ -111,13 +124,13 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
 	JOIN equipes ON equipes.id = groupe_equipes.equipe_id
 	ORDER BY groupes.lettre, equipes.classement_fifa
 	";
-	$requete = $pdo->query($sql);
-	$equipes = $requete->fetchAll(PDO::FETCH_ASSOC);
-	$groupes = [];
-	foreach ($equipes as $equipe) {
-	    $groupes[$equipe["groupe"]][] = $equipe;
-	}
-?>
+        $requete = $pdo->query($sql);
+        $equipes = $requete->fetchAll(PDO::FETCH_ASSOC);
+        $groupes = [];
+        foreach ($equipes as $equipe) {
+            $groupes[$equipe["groupe"]][] = $equipe;
+        }
+        ?>
       
         <div class="hero container-fluid px-0">
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -136,8 +149,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe A
     <?php foreach ($groupes['A'] as $equipe): ?>
       <div class="  fs-3 d-flex align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+      <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+    </span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -147,8 +162,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe B
     <?php foreach ($groupes['B'] as $equipe): ?>
       <div class="  fs-3 d-flex align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -158,8 +175,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe C
     <?php foreach ($groupes['C'] as $equipe): ?>
       <div class="  fs-3 d-flex align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -171,8 +190,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe D
     <?php foreach ($groupes['D'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -182,8 +203,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe E
     <?php foreach ($groupes['E'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -193,8 +216,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe F
     <?php foreach ($groupes['F'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -206,8 +231,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe G
     <?php foreach ($groupes['G'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -217,8 +244,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe H
     <?php foreach ($groupes['H'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -228,8 +257,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe I
     <?php foreach ($groupes['I'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -241,8 +272,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe J
     <?php foreach ($groupes['J'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -252,8 +285,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe K
     <?php foreach ($groupes['K'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -263,8 +298,10 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     Groupe L
     <?php foreach ($groupes['L'] as $equipe): ?>
       <div class="  fs-3 d-flex   align-items-center">
-        <span><?= htmlspecialchars($equipe['pays']) ?></span>
-        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+        <span onclick="afficherEquipe('<?php echo htmlspecialchars($equipe['pays']) ?>')" style="cursor:pointer">
+        <?php echo htmlspecialchars($equipe['pays']) ?>
+</span>
+        <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
       </div>
     <?php endforeach; ?>
     </div>
@@ -275,7 +312,7 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
 
 <div id="matchs" class="section d-none">
   <?php
-  $sqlMatchs = "
+    $sqlMatchs = "
     SELECT
       matchs.date_match,
       groupes.lettre AS groupe,
@@ -293,9 +330,9 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     JOIN equipes equipe2 ON equipe2.id = me2.equipe_id
     ORDER BY matchs.date_match
   ";
-  $requeteMatchs = $pdo->query($sqlMatchs);
-  $listeMatchs = $requeteMatchs->fetchAll(PDO::FETCH_ASSOC);
-  ?>
+    $requeteMatchs = $pdo->query($sqlMatchs);
+    $listeMatchs = $requeteMatchs->fetchAll(PDO::FETCH_ASSOC);
+    ?>
 
   <div class="hero">
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -313,22 +350,22 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
       <h1 class="text-center text-white mb-4">Les matchs de la Coupe du monde 2026</h1>
       <div class="row g-4">
         <?php foreach ($listeMatchs as $match): ?>
-          <?php $date = new DateTime($match['date_match']); ?>
+            <?php $date = new DateTime($match['date_match']); ?>
           <div class="col-12 col-md-6 col-lg-4">
             <div class="carte-match">
-              <div class="groupe-match">Groupe <?= htmlspecialchars($match['groupe']) ?></div>
-              <div class="date-match"><?= $date->format('d/m/Y à H:i') ?></div>
+              <div class="groupe-match">Groupe <?php echo htmlspecialchars($match['groupe']) ?></div>
+              <div class="date-match"><?php echo $date->format('d/m/Y à H:i') ?></div>
               <div class="equipes-match">
                 <!--
-                <span><?= htmlspecialchars($match['equipe1']) ?></span>
+                <span><?php echo htmlspecialchars($match['equipe1']) ?></span>
                 <strong>VS</strong>
-                <span><?= htmlspecialchars($match['equipe2']) ?></span>
+                <span><?php echo htmlspecialchars($match['equipe2']) ?></span>
                 -->
                 <span class="team">
-                  <?= htmlspecialchars($match['equipe1']) ?>
+                  <?php echo htmlspecialchars($match['equipe1']) ?>
                   <img
-                    src="https://flagcdn.com/w40/<?= strtolower(htmlspecialchars($match['code_equipe1'])) ?>.png"
-                    alt="Drapeau <?= htmlspecialchars($match['equipe1']) ?>"
+                    src="https://flagcdn.com/w40/<?php echo strtolower(htmlspecialchars($match['code_equipe1'])) ?>.png"
+                    alt="Drapeau <?php echo htmlspecialchars($match['equipe1']) ?>"
                     class="team-flag"
                   >
                 </span>
@@ -337,14 +374,14 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
 
                 <span class="team">
                   <img
-                    src="https://flagcdn.com/w40/<?= strtolower(htmlspecialchars($match['code_equipe2'])) ?>.png"
-                    alt="Drapeau <?= htmlspecialchars($match['equipe2']) ?>"
+                    src="https://flagcdn.com/w40/<?php echo strtolower(htmlspecialchars($match['code_equipe2'])) ?>.png"
+                    alt="Drapeau <?php echo htmlspecialchars($match['equipe2']) ?>"
                     class="team-flag"
                   >
-                  <?= htmlspecialchars($match['equipe2']) ?>
+                  <?php echo htmlspecialchars($match['equipe2']) ?>
                 </span>
               </div>
-              <div class="stade-match"><?= htmlspecialchars($match['stade']) ?></div>
+              <div class="stade-match"><?php echo htmlspecialchars($match['stade']) ?></div>
             </div>
           </div>
         <?php endforeach; ?>
@@ -352,7 +389,7 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
     </div>
   </div>
 </div><div id="classement" class="section d-none">
-	<div class="hero">
+    <div class="hero">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <div class="navbar-nav ms-auto">
@@ -364,7 +401,7 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
       </div>
     </nav>
     <?php
-	$sqlClassement = "
+    $sqlClassement = "
 	  SELECT 
 	    equipes.nom AS pays,
 	    equipes.code_pays,
@@ -374,9 +411,9 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
 	  ORDER BY equipes.classement_fifa ASC
 	";
 
-	$requeteClassement = $pdo->query($sqlClassement);
-	$classement = $requeteClassement->fetchAll(PDO::FETCH_ASSOC);
-?>
+    $requeteClassement = $pdo->query($sqlClassement);
+    $classement = $requeteClassement->fetchAll(PDO::FETCH_ASSOC);
+    ?>
 <div class="container py-4">
       <h1 class="text-center text-white mb-4">Classement FIFA</h1>
       <table class="table table-dark table-striped table-hover">
@@ -391,19 +428,34 @@ $prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
         <tbody>
           <?php foreach ($classement as $equipe): ?>
           <tr>
-            <td><?= $equipe['classement_fifa'] ?></td>
+            <td><?php echo $equipe['classement_fifa'] ?></td>
             <td>
-              <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
+              <img src="https://flagcdn.com/24x18/<?php echo strtolower(htmlspecialchars($equipe['code_pays'])) ?>.png">
             </td>
-            <td><?= htmlspecialchars($equipe['pays']) ?></td>
-            <td><?= htmlspecialchars($equipe['confederation']) ?></td>
+            <td><?php echo htmlspecialchars($equipe['pays']) ?></td>
+            <td><?php echo htmlspecialchars($equipe['confederation']) ?></td>
           </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
     </div>
   </div>
-</div>	
+</div>    
+    <div id="equipe" class="section d-none">
+  <div class="hero">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="#" onclick="showSection('accueil')">Accueil</a>
+          <a class="nav-link" href="#" onclick="showSection('groupes')">Groupes</a>
+          <a class="nav-link" href="#" onclick="showSection('matchs')">Matchs</a>
+          <a class="nav-link" href="#" onclick="showSection('classement')">Classement</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container py-4" id="detail-equipe"></div>
+  </div>
+</div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     ></script>
