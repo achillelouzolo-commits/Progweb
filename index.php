@@ -1,4 +1,30 @@
-	<!doctype html>
+<?php
+$pdo = new PDO('mysql:host=localhost;dbname=mondial_2026;charset=utf8mb4', 'root', '');
+
+$sqlProchain = "
+  SELECT
+    matchs.date_match,
+    groupes.lettre AS groupe,
+    stades.nom AS stade,
+    equipe1.nom AS equipe1,
+    equipe1.code_pays AS code_equipe1,
+    equipe2.nom AS equipe2,
+    equipe2.code_pays AS code_equipe2
+  FROM matchs
+  JOIN groupes ON groupes.id = matchs.groupe_id
+  JOIN stades ON stades.id = matchs.stade_id
+  JOIN match_equipes me1 ON me1.match_id = matchs.id
+  JOIN match_equipes me2 ON me2.match_id = matchs.id AND me1.equipe_id < me2.equipe_id
+  JOIN equipes equipe1 ON equipe1.id = me1.equipe_id
+  JOIN equipes equipe2 ON equipe2.id = me2.equipe_id
+  WHERE matchs.date_match >= NOW()
+  ORDER BY matchs.date_match ASC
+  LIMIT 1
+";
+$requeteProchain = $pdo->query($sqlProchain);
+$prochain = $requeteProchain->fetch(PDO::FETCH_ASSOC);
+?>
+<!doctype html>
 <html lang="fr" data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
@@ -37,8 +63,37 @@
           <p class="lead mb-4">
             Les équipes, les groupes et tous les matchs du plus grand Mondial de l'Histoire, réunis dans une seule expérience simple et vivante.  
           </p>
-        </div>
+          <?php if ($prochain): ?>
+<div class="d-flex justify-content-center">
+<div style="width: 600px;">
+  <div class="carte-match">
+    <div class="groupe-match">
+      ⚽ Prochain match — Groupe <?= htmlspecialchars($prochain['groupe']) ?>
+    </div>
+    <div class="date-match fs-5">
+      <?= date('d/m/Y à H:i', strtotime($prochain['date_match'])) ?>
+    </div>
+    <div class="equipes-match fs-4">
+      <span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($prochain['code_equipe1'])) ?>.png">
+        <?= htmlspecialchars($prochain['equipe1']) ?>
+      </span>
+      <strong>VS</strong>
+      <span>
+        <img src="https://flagcdn.com/24x18/<?= strtolower(htmlspecialchars($prochain['code_equipe2'])) ?>.png">
+        <?= htmlspecialchars($prochain['equipe2']) ?>
+      </span>
+    </div>
+    <div class="stade-match fs-5">
+      📍 <?= htmlspecialchars($prochain['stade']) ?>
+    </div>
+  </div>
+  </div>
+</div>
+<?php endif; ?>
+</div>
       </div>
+      
       </div>
     </div>
     <div id="groupes" class="section d-none">
